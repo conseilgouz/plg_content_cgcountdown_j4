@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension group="content" method="upgrade" type="plugin" version="4">
+	<name>plg_content_cgcountdown</name>
+	<creationDate>2021 October</creationDate>
+	<author>ConseilGouz</author>
+	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
+	<authorUrl>www.conseilgouz.command</authorUrl>
+	<copyright>ConseilGouz</copyright>
+	<license>GNU/GPL</license>
+	<version>2.0.0</version>
+	<description>PLG_CONTENT_CGCOUNTDOWN_DESCRIPTION</description>
+	<files>
+		<filename plugin="cgcountdown">cgcountdown.php</filename>
+		<filename >index.html</filename>
+		<folder>language</folder>
+		<folder>js</folder>
+		<folder>sound</folder>
+		<folder>css</folder>
+	</files>
+	<config>
+	<fields name="params">
+		<fieldset name="basic">
+		</fieldset>
+	</fields>
+	</config>
+  <updateservers>
+        <server type="extension" name="plg_content_cgcountdown" priority="1">https://www.conseilgouz.com/updates/plg_content_cgcountdown_update.xml</server>
+    </updateservers>
+</extension>
