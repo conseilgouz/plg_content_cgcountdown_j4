@@ -1,9 +1,11 @@
 <?php
 /**
-* CG Count Down  - Joomla 4.x plugin 
-* Version			: 2.0.0
-* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * CG CountDown Plugin
+ * Version 2.0.1 
+ * License http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * Copyright (c) 2022 ConseilGouz. All Rights Reserved.
+ * Author ConseilGouz 
+ * Compatible Joomla 4.x
 */
 // No direct access to this file
 defined('_JEXEC') or die;

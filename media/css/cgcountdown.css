@@ -1,5 +1,6 @@
 /**
- * Package CG CountDown Plugin
+ * CG CountDown Plugin
+ * Version 2.0.1 
  * License http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  * Copyright (c) 2022 ConseilGouz. All Rights Reserved.
  * Author ConseilGouz 
