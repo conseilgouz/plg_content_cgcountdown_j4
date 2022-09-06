@@ -1,10 +1,10 @@
 <?php 
 /**
- * CG CountDown Plugin
+ * Package CG CountDown Plugin
  * License http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- * Copyright (c) 2021 ConseilGouz. All Rights Reserved.
+ * Copyright (c) 2022 ConseilGouz. All Rights Reserved.
  * Author ConseilGouz 
- * Compatible Joomla 3.10 and 4.0
+ * Compatible Joomla 3.10 and 4.x
  *
  * From http://lexxus.github.io/jq-timeTo/
  *
@@ -14,15 +14,13 @@
  */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 use Joomla\CMS\Factory;
-use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\CMS\Filesystem\File;
-
-class plgContentCGCountDown extends CMSPlugin
+use Joomla\CMS\Uri\Uri;
+class plgContentCGCountDown extends JPlugin
 {	
 	protected $autoloadLanguage = true;
 
 	public function onContentPrepare($context, &$article, &$params, $page = 0) {
-		$app = Factory::getApplication();
+		$app = JFactory::getApplication();
 		if ($app->isClient('administrator')) return false;
 		$regex_one		= '/({cgcount\s*)(.*?)(})/si';
 		$regex_all		= '/{cgcount\s*.*?}/si';
@@ -31,11 +29,13 @@ class plgContentCGCountDown extends CMSPlugin
 		if ($count_matches == 0) {
 			return true;
 		}
-		$document = Factory::getDocument();
-		$document->addStyleSheet('plugins/content/cgcountdown/css/cgcountdown.css', 'text/css' );
-		$document->addStyleSheet('plugins/content/cgcountdown/css/timeTo.css', 'text/css' );
-		$document->addScript('plugins/content/cgcountdown/js/cgcountdown.js');
-		$document->addScript('plugins/content/cgcountdown/js/jquery.time-to.min.js');
+		$plg	= 'media/plg_content_cgcountdown/';
+		/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+		$wa->registerAndUseStyle('cgcountdown', $plg.'css/cgcountdown.css');
+		$wa->registerAndUseStyle('timeTo', $plg.'css/timeTo.css');
+		$wa->registerAndUseScript('countdown',$plg.'js/cgcountdown.js');
+		$wa->registerAndUseScript('timeto',$plg.'js/jquery.time-to.min.js');
 		$options = array(
 		  'count' => 60, 
 		  'down' => 1,    
@@ -51,7 +51,7 @@ class plgContentCGCountDown extends CMSPlugin
 		  'list' => '', 
 		  'interval' => 900
 		);
-		
+		$uri = Uri::getInstance();
 		for($i = 0; $i < $count_matches; $i++) {
             $output = "";
 			$cgone	= $matches[0][$i][0];
@@ -90,8 +90,8 @@ class plgContentCGCountDown extends CMSPlugin
 				$alert =0;
 				
 			}
-			if (($sound != "" ) && (!File::exists('plugins/content/cgcountdown/sound/'.$sound.''))) {
-				echo "<script>console.log('CG CountDown : plugins/content/cgcountdown/sound/".$sound." not found');</script>";
+			if (($sound != "" ) && (!file_exists($plg.'sound/'.$sound))) {
+				echo "<script>console.log('CG CountDown : ".$uri->root().$plg."sound/".$sound." not found');</script>";
 				$sound="";
 			}
 			$isdate = false;
@@ -146,7 +146,10 @@ class plgContentCGCountDown extends CMSPlugin
 			} else { 
 				$output .= '</div>';
 			}
-			if ($sound != "") $output .= '<audio id="cgcount_audio_'.$i.'"><source src="plugins/content/cgcountdown/sound/'.$sound.'" type="audio/mpeg"></audio>';
+			if ($sound != "") {
+
+				$output .= '<audio id="cgcount_audio_'.$i.'"><source src="'.$uri->root().$plg.'sound/'.$sound.'" type="audio/mpeg"></audio>';
+			}
 			$output .= '</div>';
 			$article->text = preg_replace($regex_one, $output, $article->text, 1);
 		}

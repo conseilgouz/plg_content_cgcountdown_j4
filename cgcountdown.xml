@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension group="content" method="upgrade" type="plugin" version="4">
 	<name>plg_content_cgcountdown</name>
-	<creationDate>2021 October</creationDate>
+	<creationDate>06/09/2022</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.command</authorUrl>
@@ -9,14 +9,23 @@
 	<license>GNU/GPL</license>
 	<version>2.0.0</version>
 	<description>PLG_CONTENT_CGCOUNTDOWN_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
 	<files>
 		<filename plugin="cgcountdown">cgcountdown.php</filename>
 		<filename >index.html</filename>
-		<folder>language</folder>
+	</files>
+	<languages>
+		<language tag="fr-FR">language/fr-FR/plg_content_cgcountdown.ini</language>
+		<language tag="fr-FR">language/fr-FR/plg_content_cgcountdown.sys.ini</language>
+		<language tag="en-GB">language/en-GB/plg_content_cgcountdown.ini</language>
+		<language tag="en-GB">language/en-GB/plg_content_cgcountdown.sys.ini</language>
+	</languages>
+	<media destination="plg_content_cgcountdown" folder="media">
 		<folder>js</folder>
 		<folder>sound</folder>
 		<folder>css</folder>
-	</files>
+		<filename>index.html</filename>
+	</media>
 	<config>
 	<fields name="params">
 		<fieldset name="basic">
