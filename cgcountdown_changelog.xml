@@ -9,6 +9,6 @@
         </note>
         <remove>
             <item>JQuery dependency</item>
-        </reove>
+        </remove>
 	</changelog>
 </changelogs>
