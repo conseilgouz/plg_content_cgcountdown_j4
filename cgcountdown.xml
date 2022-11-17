@@ -32,7 +32,7 @@
 		</fieldset>
 	</fields>
 	</config>
-	<changelogurl>https://raw.githubusercontent.com/conseilgouz/plg_fields_cgcountdown_j4/master/cgcountdown_changelog.xml</changelogurl>
+	<changelogurl>https://raw.githubusercontent.com/conseilgouz/plg_content_cgcountdown_j4/master/cgcountdown_changelog.xml</changelogurl>
 	<updateservers>
 		<server type="extension" name="plg_content_cgcountdown" priority="1">https://raw.githubusercontent.com/conseilgouz/updates_github/master/plg_content_cgcountdown_update.xml</server>
 	</updateservers>
