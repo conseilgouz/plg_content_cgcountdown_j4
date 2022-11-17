@@ -1,13 +1,13 @@
 <?php 
 /**
  * CG CountDown Plugin
- * Version 2.0.1 
+ * Version 2.1.0 
  * License http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  * Copyright (c) 2022 ConseilGouz. All Rights Reserved.
  * Author ConseilGouz 
  * Compatible Joomla 4.x
  *
- * From http://lexxus.github.io/jq-timeTo/
+ * From http://lexxus.github.io/jq-timeTo/ ===> https://github.com/Lexxus/fancy-timer
  *
  * {cgcount count=<timer in seconds>|color=<theme color: black/white>|text=<button text>|msg=<a stop message>|auto=<true/false>|alert=<time left before end>|sound=<mp3 sound file>}
  * {cgcount list=<nb occurences>|interv=<list interval (default 900 = 15mn)>|color=<theme color: black/white>|text=<button text>|msg=<a stop message>|auto=<true/false>|alert=<time left before end>|sound=<mp3 sound file>}
@@ -34,9 +34,9 @@ class plgContentCGCountDown extends JPlugin
 		/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 		$wa->registerAndUseStyle('cgcountdown', $plg.'css/cgcountdown.css');
-		$wa->registerAndUseStyle('timeTo', $plg.'css/timeTo.css');
+		$wa->registerAndUseStyle('fancytimer', $plg.'css/fancy-timer.css');
 		$wa->registerAndUseScript('countdown',$plg.'js/cgcountdown.js');
-		$wa->registerAndUseScript('timeto',$plg.'js/jquery.time-to.min.js');
+		$wa->registerAndUseScript('fancytimer',$plg.'js/fancy-timer.js');
 		$options = array(
 		  'count' => 60, 
 		  'down' => 1,    
@@ -140,7 +140,9 @@ class plgContentCGCountDown extends JPlugin
 				}
 				$output .= '<div class="cg_margin_inherit"><select id="cgcount_sel_'.$i.'" class="cg_sel_large"  onclick="go_select(event,'.$i.',\''.$color.'\',\''.$stopmsg.'\',\''.$auto.'\','.$fontsize.','.$alert.','.$down.',\''.$lang.'\')">'.$options.'</select></div>';
 			}
-			$output .= '<div id="countdown_'.$i.'"></div>'; 
+			$ft_color = "ft-white";
+			if ($color == "black") $ft_color = "ft-dark";
+			$output .= '<div id="countdown_'.$i.'" class="ft '.$ft_color.'"></div>'; 
 			$output .= '<div><input type="button" id="cgstop_btn_'.$i.'" class="cg_hide_btn cg_btn" value="Stop" onclick="go_stopcountdown('.$i.')">';
 			if (!$isdate) { // no stop/pause on date display
 				$output .= '<input type="button" id="cgpause_btn_'.$i.'" class="cg_hide_btn cg_btn" value="Pause" onclick="go_pausecountdown('.$i.')"></div>';

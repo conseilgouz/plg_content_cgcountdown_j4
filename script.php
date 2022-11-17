@@ -1,7 +1,7 @@
 <?php
 /**
  * CG CountDown Plugin
- * Version 2.0.1 
+ * Version 2.1.0 
  * License http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  * Copyright (c) 2022 ConseilGouz. All Rights Reserved.
  * Author ConseilGouz 
@@ -18,7 +18,7 @@ use Joomla\CMS\Filesystem\File;
 class plgcontentcgcountdownInstallerScript
 {
 	private $min_joomla_version      = '4.0.0';
-	private $min_php_version         = '7.4';
+	private $min_php_version         = '8.0';
 	private $name                    = 'Plugin CG COuntDown';
 	private $exttype                 = 'plugin';
 	private $extname                 = 'cgcountdown';
@@ -80,9 +80,10 @@ class plgcontentcgcountdownInstallerScript
 
 			Folder::delete($f);
 		}
-/*		
-		$obsloteFiles = [sprintf("%s/plugins/content/%s/simpleaccordeon.css", JPATH_SITE, $this->extname),
-						 sprintf("%s/plugins/system/%s/simpleaccordeon.js", JPATH_SITE, $this->extname)];
+		
+		$obsloteFiles = [sprintf("%s/media/plg_content_%s/css/timeTo.css", JPATH_SITE, $this->extname),
+						 sprintf("%s/media/plg_content_%s/js/timeTo.js", JPATH_SITE, $this->extname),
+						 sprintf("%s/media/plg_content_%s/js/timeTo.min.js", JPATH_SITE, $this->extname)];
 		foreach ($obsloteFiles as $file)
 		{
 			if (@is_file($file))
@@ -90,7 +91,7 @@ class plgcontentcgcountdownInstallerScript
 				File::delete($file);
 			}
 		}
-		*/
+		
 		$j = new Version();
 		$version=$j->getShortVersion(); 
 		$version_arr = explode('.',$version);
@@ -124,6 +125,18 @@ class plgcontentcgcountdownInstallerScript
         catch (RuntimeException $e) {
             JLog::add('unable to enable plugin cgcountdown', JLog::ERROR, 'jerror');
         }
+		// remove obsolete update sites
+		$query = $db->getQuery(true)
+			->delete('#__update_sites')
+			->where($db->quoteName('location') . ' like "%432473037d.url-de-test.ws/%"');
+		$db->setQuery($query);
+		$db->execute();
+		// Simple Isotope is now on Github
+		$query = $db->getQuery(true)
+			->delete('#__update_sites')
+			->where($db->quoteName('location') . ' like "%conseilgouz.com/updates/plg_content_cgcountdown_%"');
+		$db->setQuery($query);
+		$db->execute();
 
 	}
 

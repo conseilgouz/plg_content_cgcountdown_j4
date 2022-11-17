@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension group="content" method="upgrade" type="plugin" version="4">
 	<name>plg_content_cgcountdown</name>
-	<creationDate>06/09/2022</creationDate>
+	<creationDate>17/11/2022</creationDate>
 	<author>ConseilGouz</author>
 	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
 	<authorUrl>www.conseilgouz.command</authorUrl>
 	<copyright>ConseilGouz</copyright>
 	<license>GNU/GPL</license>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<description>PLG_CONTENT_CGCOUNTDOWN_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
 	<files>
@@ -32,7 +32,8 @@
 		</fieldset>
 	</fields>
 	</config>
-  <updateservers>
-        <server type="extension" name="plg_content_cgcountdown" priority="1">https://www.conseilgouz.com/updates/plg_content_cgcountdown_update.xml</server>
-    </updateservers>
+	<changelogurl>https://raw.githubusercontent.com/conseilgouz/plg_fields_cgcountdown_j4/master/cgcountdown_changelog.xml</changelogurl>
+	<updateservers>
+		<server type="extension" name="plg_content_cgcountdown" priority="1">https://raw.githubusercontent.com/conseilgouz/updates_github/master/plg_content_cgcountdown_update.xml</server>
+	</updateservers>
 </extension>

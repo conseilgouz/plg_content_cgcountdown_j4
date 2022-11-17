@@ -1,0 +1,14 @@
+<changelogs>
+	<changelog>
+		<element>cgcountdown</element>
+		<type>plugin</type>
+		<group>content</group>
+		<version>2.1.0</version>
+        <note>
+            <item>Update : 17/11/2022</item>
+        </note>
+        <remove>
+            <item>JQuery dependency</item>
+        </reove>
+	</changelog>
+</changelogs>

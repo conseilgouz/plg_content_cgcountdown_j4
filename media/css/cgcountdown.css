@@ -35,6 +35,10 @@ min-width: 13em !important;
 margin:inherit;
 text-align-last: center;
 }
+.ft {
+justify-content: center;
+align-items: center;
+}
 /* from https://www.w3schools.com/howto/howto_js_popup.asp */
 .cg_dwn_popup {
     visibility: hidden;
