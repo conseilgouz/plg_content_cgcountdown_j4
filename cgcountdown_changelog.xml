@@ -3,6 +3,18 @@
 		<element>cgcountdown</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>2.1.1</version>
+        <note>
+            <item>Update : 15/07/2023</item>
+        </note>
+        <fix>
+            <item>Joomla 5.x compatibility</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgcountdown</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>2.1.0</version>
         <note>
             <item>Update : 17/11/2022</item>

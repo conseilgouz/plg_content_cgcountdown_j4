@@ -1,11 +1,11 @@
 <?php 
 /**
  * CG CountDown Plugin
- * Version 2.1.0 
+ * Version 2.1.1 
  * License http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  * Copyright (c) 2022 ConseilGouz. All Rights Reserved.
  * Author ConseilGouz 
- * Compatible Joomla 4.x
+ * Compatible Joomla 4.x/5.x
  *
  * From http://lexxus.github.io/jq-timeTo/ ===> https://github.com/Lexxus/fancy-timer
  *
@@ -16,12 +16,14 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
-class plgContentCGCountDown extends JPlugin
+use Joomla\CMS\Plugin\CMSPlugin;
+
+class plgContentCGCountDown extends CMSPlugin
 {	
 	protected $autoloadLanguage = true;
 
 	public function onContentPrepare($context, &$article, &$params, $page = 0) {
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 		if ($app->isClient('administrator')) return false;
 		$regex_one		= '/({cgcount\s*)(.*?)(})/si';
 		$regex_all		= '/{cgcount\s*.*?}/si';
