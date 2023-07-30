@@ -24,6 +24,7 @@ class plgcontentcgcountdownInstallerScript
 	private $extname                 = 'cgcountdown';
 	private $previous_version        = '';
 	private $dir           = null;
+	private $lang;
 	private $installerName = 'plgcontentcgcountdowninstaller';
 	public function __construct()
 	{

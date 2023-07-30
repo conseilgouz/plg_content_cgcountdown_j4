@@ -3,6 +3,18 @@
 		<element>cgcountdown</element>
 		<type>plugin</type>
 		<group>content</group>
+		<version>2.1.2</version>
+        <note>
+            <item>Update : 30/07/2023</item>
+        </note>
+        <fix>
+            <item>£lang undefined in install script</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>cgcountdown</element>
+		<type>plugin</type>
+		<group>content</group>
 		<version>2.1.1</version>
         <note>
             <item>Update : 15/07/2023</item>
